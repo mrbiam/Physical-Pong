@@ -27,9 +27,9 @@ void loop() {
 
   if (distance <= 1000) {
     Serial.print(distance);
-    Serial.println(" cm");
+    Serial.println("");
   }
   
-  delay(100);
+  delay(50);
 }
 
