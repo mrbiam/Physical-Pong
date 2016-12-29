@@ -9,8 +9,8 @@ int botServoPin = 5;
 
 int laserPin = 9;
 
-const float MAX_ANGLE_T = 30;
-const float MAX_ANGLE_B = 60;
+const float MAX_ANGLE_T = 16;
+const float MAX_ANGLE_B = 30;
 
 float tPos = 0.0; //Top Servo Current Angle
 float bPos = 0.0; //Bottom Servo Current Angle
@@ -18,7 +18,7 @@ float bPos = 0.0; //Bottom Servo Current Angle
 float tVel = 0.0;
 float bVel = 0.0;
 
-float maxDirSpeed = 1;
+float maxDirSpeed = 0.01;
 
 float backgroundColor = 255;
 
@@ -28,12 +28,12 @@ void setup() {
   botServo.attach(botServoPin);
   
   //Random Initial Position
-  //tPos = random(MAX_ANGLE_T-5) + 5;
-  //bPos = random(MAX_ANGLE_B-5) + 5;
+  tPos = random(MAX_ANGLE_T-5) + 5;
+  bPos = random(MAX_ANGLE_B-5) + 5;
   
   //Zero Initial Position
-  tPos = 0;
-  bPos = 0;
+  //tPos = 0;
+  //bPos = 0;
   
   //Random Speed
   tVel = random(maxDirSpeed*2) - maxDirSpeed/2.0;
@@ -48,6 +48,27 @@ void setup() {
 }
 
 void loop() {
+  
+//  tPos = 0;
+//  bPos = 0;
+//  topServo.write(tPos); 
+//  botServo.write(bPos);
+//  delay(1000);
+//  tPos = 0;
+//  bPos = MAX_ANGLE_B;
+//  topServo.write(tPos); 
+//  botServo.write(bPos);
+//  delay(1000);
+//  tPos = MAX_ANGLE_T;
+//  bPos = MAX_ANGLE_B;
+//  topServo.write(tPos); 
+//  botServo.write(bPos);
+//  delay(1000);
+//  tPos = MAX_ANGLE_T;
+//  bPos = 0;
+//  topServo.write(tPos); 
+//  botServo.write(bPos);
+//  delay(1000);
 
   topServo.write(tPos); 
   botServo.write(bPos);
@@ -70,6 +91,5 @@ void loop() {
     bVel = -1 * bVel;
     bPos = MAX_ANGLE_B;
   }
-  
-  delay(50);                           // waits for the servo to get there
+
 }
